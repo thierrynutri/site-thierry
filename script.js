@@ -800,3 +800,6 @@ document.getElementById('plans-modal').addEventListener('click', (e) => {
 
 // Init icons
 lucide.createIcons();
+
+console.log("SCRIPT EXTERNO FUNCIONANDO");
+document.body.style.borderLeft = "6px solid blue";
