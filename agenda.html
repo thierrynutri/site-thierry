@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agenda | Dr. Thierry Teles</title>
 
+  <link rel="icon" type="image/png" href="https://res.cloudinary.com/dantppsek/image/upload/v1778263929/FAVICOIN_gwiuts.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -42,6 +44,8 @@
 
     body {
       overflow-x: hidden;
+      width: 100%;
+      min-height: 100vh;
     }
 
     .step-active {
@@ -56,13 +60,17 @@
       border-color: #0F8B6D;
     }
 
+    .slot {
+      transition: all 0.2s ease;
+    }
+
     .slot:hover {
       transform: translateY(-2px);
     }
 
     .slot.selected {
-      border-color: #F97316;
-      background: rgba(249,115,22,0.08);
+      border-color: #F97316 !important;
+      background: rgba(249,115,22,0.08) !important;
       color: #F97316;
     }
   </style>
@@ -78,7 +86,7 @@
         <div class="flex items-center gap-3">
 
           <div class="w-14 h-14 rounded-2xl bg-white shadow-soft overflow-hidden flex items-center justify-center border border-black/5">
-            <img src="https://thierryteles.com.br/logo.png" alt="Logo" class="w-full h-full object-contain">
+            <img src="https://res.cloudinary.com/dantppsek/image/upload/v1778263929/FAVICOIN_gwiuts.png" alt="Logo Dr. Thierry Teles" class="w-full h-full object-contain">
           </div>
 
           <div>
@@ -95,10 +103,9 @@
       </div>
     </header>
 
+    <section class="max-w-6xl mx-auto px-5 pt-10 lg:pt-14 pb-10">
 
-    <section class="max-w-6xl mx-auto px-5 pt-14 pb-10">
-
-      <div class="grid lg:grid-cols-2 gap-14 items-center">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
 
         <div>
 
@@ -107,7 +114,7 @@
             Horários disponíveis esta semana
           </div>
 
-          <h2 class="font-heading font-extrabold text-5xl leading-tight max-w-xl">
+          <h2 class="font-heading font-extrabold text-4xl sm:text-5xl leading-tight max-w-xl">
             Escolha o melhor horário para seu
             <span class="text-primary">acompanhamento</span>
           </h2>
@@ -130,8 +137,7 @@
           </div>
         </div>
 
-
-        <div class="bg-white border border-black/5 rounded-[32px] shadow-soft p-6 lg:p-8">
+        <div class="bg-white border border-black/5 rounded-[28px] lg:rounded-[32px] shadow-soft p-5 sm:p-6 lg:p-8 overflow-hidden">
 
           <div class="flex items-center justify-between mb-8">
 
@@ -144,7 +150,6 @@
               <span class="text-primary text-2xl">+</span>
             </div>
           </div>
-
 
           <div class="flex items-center justify-between gap-3 mb-10 overflow-x-auto pb-2">
 
@@ -175,15 +180,14 @@
             </div>
           </div>
 
-
-          <div id="content-area">
+          <div>
 
             <div id="screen1">
               <h4 class="font-heading font-bold text-xl mb-5">Selecione o tipo de consulta</h4>
 
               <div class="space-y-4">
 
-                <button onclick="nextStep(2)" class="w-full text-left p-5 rounded-3xl border border-black/5 hover:border-primary/20 transition bg-[#FFFDF9] hover:bg-orange-50/40">
+                <button type="button" onclick="selectConsultation('Retorno nutricional')" class="w-full text-left p-5 rounded-3xl border border-black/5 hover:border-primary/20 transition bg-[#FFFDF9] hover:bg-orange-50/40">
                   <div class="flex items-center justify-between gap-4">
                     <div>
                       <h5 class="font-semibold text-lg">Retorno nutricional</h5>
@@ -193,7 +197,7 @@
                   </div>
                 </button>
 
-                <button onclick="nextStep(2)" class="w-full text-left p-5 rounded-3xl border border-black/5 hover:border-primary/20 transition bg-white hover:bg-orange-50/40">
+                <button type="button" onclick="selectConsultation('Primeira consulta')" class="w-full text-left p-5 rounded-3xl border border-black/5 hover:border-primary/20 transition bg-white hover:bg-orange-50/40">
                   <div class="flex items-center justify-between gap-4">
                     <div>
                       <h5 class="font-semibold text-lg">Primeira consulta</h5>
@@ -203,7 +207,7 @@
                   </div>
                 </button>
 
-                <button onclick="nextStep(2)" class="w-full text-left p-5 rounded-3xl border border-black/5 hover:border-primary/20 transition bg-white hover:bg-orange-50/40">
+                <button type="button" onclick="selectConsultation('Reavaliação')" class="w-full text-left p-5 rounded-3xl border border-black/5 hover:border-primary/20 transition bg-white hover:bg-orange-50/40">
                   <div class="flex items-center justify-between gap-4">
                     <div>
                       <h5 class="font-semibold text-lg">Reavaliação</h5>
@@ -215,46 +219,148 @@
               </div>
             </div>
 
-
             <div id="screen2" class="hidden">
 
               <div class="flex items-center justify-between mb-6">
                 <h4 class="font-heading font-bold text-xl">Escolha um horário</h4>
-                <button onclick="backStep(1)" class="text-sm text-text hover:text-primary transition">Voltar</button>
+                <button type="button" onclick="backStep(1)" class="text-sm text-text hover:text-primary transition">Voltar</button>
               </div>
 
-              <div class="grid grid-cols-3 gap-3 mb-6">
-                <button class="slot p-4 rounded-2xl border border-black/10 bg-white transition text-center">
+              <p class="text-sm font-medium text-text mb-3">Datas disponíveis</p>
+
+              <div class="grid grid-cols-3 gap-2 sm:gap-3 mb-6">
+                <button type="button" data-date="12 MAI" class="slot date-slot p-4 rounded-2xl border border-black/10 bg-white transition text-center">
                   <p class="text-xs text-text">SEG</p>
                   <p class="font-bold text-lg mt-1">12</p>
                   <p class="text-xs text-text">MAI</p>
                 </button>
 
-                <button class="slot selected p-4 rounded-2xl border bg-white transition text-center">
+                <button type="button" data-date="13 MAI" class="slot date-slot p-4 rounded-2xl border border-black/10 bg-white transition text-center selected">
                   <p class="text-xs">TER</p>
                   <p class="font-bold text-lg mt-1">13</p>
                   <p class="text-xs">MAI</p>
                 </button>
 
-                <button class="slot p-4 rounded-2xl border border-black/10 bg-white transition text-center">
+                <button type="button" data-date="14 MAI" class="slot date-slot p-4 rounded-2xl border border-black/10 bg-white transition text-center">
                   <p class="text-xs text-text">QUA</p>
                   <p class="font-bold text-lg mt-1">14</p>
                   <p class="text-xs text-text">MAI</p>
                 </button>
               </div>
 
-              <div class="grid grid-cols-3 gap-3">
-                <button class="slot selected py-4 rounded-2xl border bg-orange-50 text-primary font-semibold transition">08:00</button>
-                <button class="slot py-4 rounded-2xl border border-black/10 bg-white font-semibold transition">09:00</button>
-                <button class="slot py-4 rounded-2xl border border-black/10 bg-white font-semibold transition">10:00</button>
-                <button class="slot py-4 rounded-2xl border border-black/10 bg-white font-semibold transition">14:00</button>
-                <button class="slot py-4 rounded-2xl border border-black/10 bg-white font-semibold transition">15:00</button>
-                <button class="slot py-4 rounded-2xl border border-black/10 bg-white font-semibold transition">16:00</button>
+              <p class="text-sm font-medium text-text mb-3">Horários disponíveis</p>
+
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                <button type="button" data-time="08:00" class="slot time-slot py-4 rounded-2xl border bg-orange-50 text-primary font-semibold transition selected">08:00</button>
+                <button type="button" data-time="09:00" class="slot time-slot py-4 rounded-2xl border border-black/10 bg-white font-semibold transition">09:00</button>
+                <button type="button" data-time="10:00" class="slot time-slot py-4 rounded-2xl border border-black/10 bg-white font-semibold transition">10:00</button>
+                <button type="button" data-time="14:00" class="slot time-slot py-4 rounded-2xl border border-black/10 bg-white font-semibold transition">14:00</button>
+                <button type="button" data-time="15:00" class="slot time-slot py-4 rounded-2xl border border-black/10 bg-white font-semibold transition">15:00</button>
+                <button type="button" data-time="16:00" class="slot time-slot py-4 rounded-2xl border border-black/10 bg-white font-semibold transition">16:00</button>
               </div>
 
-              <button onclick="nextStep(3)" class="w-full mt-8 py-5 rounded-2xl bg-primary text-white font-semibold text-lg shadow-soft hover:scale-[1.01] transition">
+              <button type="button" onclick="goToDataStep()" class="w-full mt-8 py-5 rounded-2xl bg-primary text-white font-semibold text-lg shadow-soft hover:scale-[1.01] transition">
                 Continuar
               </button>
+            </div>
+
+            <div id="screen3" class="hidden">
+
+              <div class="flex items-center justify-between mb-6">
+                <h4 class="font-heading font-bold text-xl">Seus dados</h4>
+                <button type="button" onclick="backStep(2)" class="text-sm text-text hover:text-primary transition">Voltar</button>
+              </div>
+
+              <div class="space-y-4">
+                <input id="patient-name" type="text" placeholder="Seu nome" class="w-full p-4 rounded-2xl border border-black/10 outline-none focus:border-primary">
+
+                <div class="flex items-center gap-3 w-full p-3 rounded-2xl border border-black/10 focus-within:border-primary bg-white overflow-hidden">
+
+                  <button type="button" id="country-selector" class="flex items-center gap-2 min-w-fit pr-3 border-r border-black/10">
+                    <span id="country-flag" class="text-xl">🇧🇷</span>
+                    <span id="country-code" class="text-sm font-semibold">+55</span>
+                  </button>
+
+                  <input id="patient-whatsapp" type="tel" placeholder="WhatsApp" class="flex-1 bg-transparent outline-none text-base min-w-0">
+
+                </div>
+
+                <div id="country-dropdown" class="hidden mt-2 bg-white border border-black/10 rounded-2xl shadow-soft overflow-hidden">
+
+                  <button type="button" onclick="selectCountry('🇧🇷', '+55')" class="w-full flex items-center gap-3 px-4 py-3 hover:bg-orange-50 transition text-left">
+                    <span class="text-xl">🇧🇷</span>
+                    <span class="font-medium">Brasil</span>
+                    <span class="text-text text-sm ml-auto">+55</span>
+                  </button>
+
+                  <button type="button" onclick="selectCountry('🇦🇷', '+54')" class="w-full flex items-center gap-3 px-4 py-3 hover:bg-orange-50 transition text-left">
+                    <span class="text-xl">🇦🇷</span>
+                    <span class="font-medium">Argentina</span>
+                    <span class="text-text text-sm ml-auto">+54</span>
+                  </button>
+
+                  <button type="button" onclick="selectCountry('🇺🇸', '+1')" class="w-full flex items-center gap-3 px-4 py-3 hover:bg-orange-50 transition text-left">
+                    <span class="text-xl">🇺🇸</span>
+                    <span class="font-medium">Estados Unidos</span>
+                    <span class="text-text text-sm ml-auto">+1</span>
+                  </button>
+
+                  <button type="button" onclick="selectCountry('🇵🇹', '+351')" class="w-full flex items-center gap-3 px-4 py-3 hover:bg-orange-50 transition text-left">
+                    <span class="text-xl">🇵🇹</span>
+                    <span class="font-medium">Portugal</span>
+                    <span class="text-text text-sm ml-auto">+351</span>
+                  </button>
+
+                </div>
+
+                <textarea id="patient-note" rows="4" placeholder="Observações opcionais" class="w-full p-4 rounded-2xl border border-black/10 outline-none focus:border-primary resize-none"></textarea>
+              </div>
+
+              <div class="flex gap-3 mt-8">
+                <button type="button" onclick="backStep(2)" class="w-1/3 py-5 rounded-2xl border border-black/10 bg-white font-semibold hover:bg-black/5 transition">
+                  Voltar
+                </button>
+
+                <button type="button" onclick="goToConfirmation()" class="w-2/3 py-5 rounded-2xl bg-primary text-white font-semibold shadow-soft hover:scale-[1.01] transition">
+                  Continuar
+                </button>
+              </div>
+            </div>
+
+            <div id="screen4" class="hidden">
+
+              <div class="text-center">
+
+                <div class="w-20 h-20 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-6">
+                  <span class="text-3xl">✓</span>
+                </div>
+
+                <h4 class="font-heading font-bold text-2xl mb-3">
+                  Confirmar agendamento
+                </h4>
+
+                <p class="text-text leading-relaxed mb-8">
+                  Revise seus dados antes de confirmar.
+                </p>
+
+                <div class="bg-soft rounded-3xl p-5 text-left mb-8 border border-black/5 space-y-3">
+                  <p><strong>Nome:</strong> <span id="confirm-name"></span></p>
+                  <p><strong>WhatsApp:</strong> <span id="confirm-whatsapp"></span></p>
+                  <p><strong>Consulta:</strong> <span id="confirm-consultation"></span></p>
+                  <p><strong>Data:</strong> <span id="confirm-date"></span></p>
+                  <p><strong>Horário:</strong> <span id="confirm-time"></span></p>
+                </div>
+
+                <div class="flex gap-3">
+                  <button type="button" onclick="backStep(3)" class="w-1/3 py-5 rounded-2xl border border-black/10 bg-white font-semibold hover:bg-black/5 transition">
+                    Voltar
+                  </button>
+
+                  <button type="button" onclick="sendWhatsApp()" class="w-2/3 py-5 rounded-2xl bg-mint text-white font-semibold shadow-soft hover:scale-[1.01] transition">
+                    Confirmar
+                  </button>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -263,25 +369,37 @@
     </section>
   </div>
 
-
   <script>
+
+    let selectedConsultation = '';
+    let selectedDate = '13 MAI';
+    let selectedTime = '08:00';
+    let selectedCountryCode = '+55';
+
+    function selectConsultation(type) {
+      selectedConsultation = type;
+      nextStep(2);
+    }
 
     function nextStep(step) {
       document.querySelectorAll('[id^="screen"]').forEach(el => {
         el.classList.add('hidden');
       });
 
-      document.getElementById('screen' + step).classList.remove('hidden');
+      const currentScreen = document.getElementById('screen' + step);
+      if (currentScreen) {
+        currentScreen.classList.remove('hidden');
+      }
 
       for (let i = 1; i <= 4; i++) {
-        const el = document.getElementById('step' + i);
+        const indicator = document.getElementById('step' + i);
 
-        el.classList.remove('step-active', 'step-completed');
+        indicator.classList.remove('step-active', 'step-completed');
 
         if (i < step) {
-          el.classList.add('step-completed');
+          indicator.classList.add('step-completed');
         } else if (i === step) {
-          el.classList.add('step-active');
+          indicator.classList.add('step-active');
         }
       }
     }
@@ -289,6 +407,91 @@
     function backStep(step) {
       nextStep(step);
     }
+
+    function goToDataStep() {
+      nextStep(3);
+    }
+
+    function goToConfirmation() {
+
+      const name = document.getElementById('patient-name').value.trim();
+      const whatsapp = `${selectedCountryCode} ${document.getElementById('patient-whatsapp').value.trim()}`;
+
+      if (!name || !whatsapp) {
+        alert('Preencha nome e WhatsApp.');
+        return;
+      }
+
+      document.getElementById('confirm-name').textContent = name;
+      document.getElementById('confirm-whatsapp').textContent = whatsapp;
+      document.getElementById('confirm-consultation').textContent = selectedConsultation;
+      document.getElementById('confirm-date').textContent = selectedDate;
+      document.getElementById('confirm-time').textContent = selectedTime;
+
+      nextStep(4);
+    }
+
+    function selectCountry(flag, code) {
+
+      document.getElementById('country-flag').textContent = flag;
+      document.getElementById('country-code').textContent = code;
+
+      selectedCountryCode = code;
+
+      document.getElementById('country-dropdown').classList.add('hidden');
+    }
+
+    function sendWhatsApp() {
+
+      const name = document.getElementById('patient-name').value.trim();
+      const whatsapp = document.getElementById('patient-whatsapp').value.trim();
+      const note = document.getElementById('patient-note').value.trim();
+
+      const message = `Olá Dr. Thierry!%0A%0AGostaria de confirmar meu agendamento.%0A%0A*Nome:* ${name}%0A*WhatsApp:* ${whatsapp}%0A*Consulta:* ${selectedConsultation}%0A*Data:* ${selectedDate}%0A*Horário:* ${selectedTime}%0A${note ? `%0A*Observações:* ${note}` : ''}`;
+
+      window.open(`https://wa.me/5575998855519?text=${message}`, '_blank');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+      const countrySelector = document.getElementById('country-selector');
+      const countryDropdown = document.getElementById('country-dropdown');
+
+      countrySelector.addEventListener('click', () => {
+        countryDropdown.classList.toggle('hidden');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!countrySelector.contains(e.target) && !countryDropdown.contains(e.target)) {
+          countryDropdown.classList.add('hidden');
+        }
+      });
+
+      const dateSlots = document.querySelectorAll('.date-slot');
+      const timeSlots = document.querySelectorAll('.time-slot');
+
+      dateSlots.forEach(slot => {
+        slot.addEventListener('click', () => {
+
+          dateSlots.forEach(item => item.classList.remove('selected'));
+
+          slot.classList.add('selected');
+
+          selectedDate = slot.dataset.date;
+        });
+      });
+
+      timeSlots.forEach(slot => {
+        slot.addEventListener('click', () => {
+
+          timeSlots.forEach(item => item.classList.remove('selected'));
+
+          slot.classList.add('selected');
+
+          selectedTime = slot.dataset.time;
+        });
+      });
+    });
 
   </script>
 
