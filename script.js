@@ -1,1 +1,1 @@
-console.log("Site Dr. Thierry carregado");
+document.body.style.borderBottom = "6px solid lime";
