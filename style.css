@@ -146,6 +146,9 @@ section {
 .country-dropdown-menu.show {
   display: block;
 }
+.country-dropdown-menu * {
+  background: white;
+}
   .country-search-input {
     width: 100%;
     padding: 10px 14px;
