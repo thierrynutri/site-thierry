@@ -15,18 +15,11 @@ const testimonials1 = [
     border: "border-emerald-100"
   },
   {
-    text: "Profissional de excelência. Excelente ouvinte e acompanhamento nota 10!",
+    text: "Profissional de excelência. Excelente ouvinte e acompanhamento nota 10! Antes de tudo, um ser humano de excelência. Informações precisas. Gratidão!",
     name: "Ana Paula Sales",
     role: "Paciente",
     gradient: "from-neutral-50 to-white",
     border: "border-neutral-200"
-  },
-  {
-    text: "Antes de tudo, um ser humano de excelência. Informações precisas. Gratidão!",
-    name: "Joziselma Sousa",
-    role: "Paciente",
-    gradient: "from-amber-50 to-white",
-    border: "border-amber-100"
   }
 ];
 
@@ -44,13 +37,6 @@ const testimonials2 = [
     role: "Paciente",
     gradient: "from-violet-50 to-white",
     border: "border-violet-100"
-  },
-  {
-    text: "Joziselma Sousa — profissional de excelência. Excelente ouvinte e acompanhamento nota 10!",
-    name: "Joziselma Sousa",
-    role: "Paciente",
-    gradient: "from-amber-50 to-white",
-    border: "border-amber-100"
   }
 ];
 
