@@ -1,5 +1,3 @@
-
-}
 html, body {
     margin: 0;
     padding: 0;
@@ -116,8 +114,6 @@ section {
   background: #ffffff !important;
   opacity: 1 !important;
 
-  top: auto;
-  left: auto;
 
   width: min(280px, calc(100vw - 32px));
 
@@ -147,7 +143,6 @@ section {
 
   contain: layout paint style;
 }
-}
 .country-dropdown-menu.show {
   display: block;
 }
@@ -175,6 +170,7 @@ section {
     font-size: 0.875rem;
     border-radius: 0.75rem;
     margin-bottom: 4px;
+    background: white;
   }
   .country-item:hover {
     background: #FED7AA;
