@@ -134,12 +134,11 @@ section {
   padding: 12px;
   opacity: 1;
   backdrop-filter: none;
+  isolation: isolate;
 }
-
 .country-dropdown-menu.show {
   display: block;
 }
-  }
   .country-search-input {
     width: 100%;
     padding: 10px 14px;
@@ -206,11 +205,6 @@ section {
   }
   .phone-number-input::placeholder {
     color: #d1d5db;
-  }
-    overflow: hidden;
-    width: 100%;
-    background: white;
-    py-4;
   }
   .marquee-wrapper {
     width: 100%;
