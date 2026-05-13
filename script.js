@@ -246,18 +246,8 @@ function toggleCountryDropdown(fieldId) {
   if (!isOpen) {
     // Posicionar o dropdown relativemente ao selector
     const rect = selector.getBoundingClientRect();
-    dropdown.style.position = 'fixed';
-    dropdown.style.top = (rect.bottom + 8) + 'px';
-    dropdown.style.left = Math.max(12, rect.left) + 'px';
     
-    // Ajustar para não sair da tela à direita
-    setTimeout(() => {
-      const dropdownRect = dropdown.getBoundingClientRect();
-      if (dropdownRect.right > window.innerWidth - 12) {
-        dropdown.style.left = (window.innerWidth - dropdown.offsetWidth - 12) + 'px';
-      }
-    }, 0);
-    
+    // Ajustar para não sair da tela à direita    
     dropdown.classList.add('show');
     toggle.classList.add('open');
     
