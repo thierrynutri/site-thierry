@@ -246,7 +246,8 @@ function toggleCountryDropdown(event, fieldId) {
   if (!isOpen) {
     // Posicionar o dropdown relativemente ao selector
     const rect = selector.getBoundingClientRect();
-    
+    dropdown.style.top = `${rect.bottom + 8}px`;
+    dropdown.style.left = `${rect.left}px`;    
     // Ajustar para não sair da tela à direita    
     dropdown.classList.add('show');
     toggle.classList.add('open');
