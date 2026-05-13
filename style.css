@@ -61,12 +61,6 @@ section {
   .iti__country { padding: 8px 12px; }
   .iti__country:hover { background: #FED7AA; }
   .iti__country.iti__highlight { background: #FED7AA; }
-  .iti__input { width: 100%; padding: 0.75rem; border-radius: 0.75rem; border: 1px solid #e5e7eb; font-size: 1rem; }
-  .iti__input:focus { border-color: #EA580C; outline: none; box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.1); }
-  .iti__country-list { border-radius: 0.75rem; border: 1px solid #e5e7eb; max-height: 200px; }
-  .iti__country { padding: 8px 12px; }
-  .iti__country:hover { background: #FED7AA; }
-  .iti__country.iti__highlight { background: #FED7AA; }
   .phone-input-wrapper { width: 100%; }
   /* Custom Phone Input Container */
   .phone-input-container {
@@ -121,7 +115,7 @@ section {
   position: absolute;
   top: calc(100% + 10px);
   left: 0;
-  width: 280px;
+  width: min(280px, calc(100vw - 32px));
   background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 1.25rem;
