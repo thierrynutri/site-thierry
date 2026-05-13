@@ -79,6 +79,7 @@ section {
     border-radius: 0.75rem;
     background: white;
     transition: all 0.2s ease;
+    position: relative;
   }
   .phone-input-container:focus-within {
     border-color: #EA580C;
@@ -116,24 +117,22 @@ section {
   .country-dropdown-toggle.open {
     transform: rotate(180deg);
   }
-  .country-dropdown-menu {
-    position: fixed;
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 1.25rem;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
-    min-width: 320px;
-    max-height: 500px;
-    overflow-y: auto;
-    display: none;
-    animation: slideUp 0.3s ease-out;
-    padding: 12px;
-  }
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+.country-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 1.25rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  max-height: 260px;
+  overflow-y: auto;
+  display: none;
+  animation: slideUp 0.3s ease-out;
+  padding: 12px;
+}
   .country-dropdown-menu.show {
     display: block;
   }
