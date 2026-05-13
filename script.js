@@ -228,7 +228,7 @@ let currentCountryState = {
   sch: { flag: '🇧🇷', code: '+55', name: 'Brasil' }
 };
 
-function toggleCountryDropdown(fieldId) {
+function toggleCountryDropdown(event, fieldId) {
   event.stopPropagation();
   
   const dropdown = document.getElementById(`${fieldId}-dropdown`);
@@ -264,7 +264,7 @@ function renderCountryDropdown(fieldId) {
   const searchHtml = `<input type="text" class="country-search-input" placeholder="Buscar país..." onkeyup="filterCountries(this, '${fieldId}')">`;
   const countriesHtml = countryList.map((country) => `
     <div class="country-item ${currentCountryState[fieldId]?.code === country.dialCode ? 'selected' : ''}" 
-         onclick="selectCountry('${fieldId}', '${country.flag}', '${country.dialCode}', '${country.name}')">
+         onclick="selectCountry(event, '${fieldId}', '${country.flag}', '${country.dialCode}', '${country.name}')">
       <span class="country-item-flag">${country.flag}</span>
       <div class="country-item-info">
         <span class="country-item-name">${country.name}</span>
@@ -293,7 +293,7 @@ function filterCountries(input, fieldId) {
   });
 }
 
-function selectCountry(fieldId, flag, dialCode, name) {
+function selectCountry(event, fieldId, flag, dialCode, name) {
   const dropdown = document.getElementById(`${fieldId}-dropdown`);
   const toggle = document.getElementById(`${fieldId}-toggle`);
   const flagEl = document.getElementById(`${fieldId}-flag`);
