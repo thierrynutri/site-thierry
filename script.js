@@ -230,31 +230,42 @@ let currentCountryState = {
 
 function toggleCountryDropdown(event, fieldId) {
   event.stopPropagation();
-  
+
   const dropdown = document.getElementById(`${fieldId}-dropdown`);
   const selector = event.target.closest('.country-flag-selector');
   const toggle = document.getElementById(`${fieldId}-toggle`);
-  
+
   if (!dropdown || !selector || !toggle) return;
-  
+
   const isOpen = dropdown.classList.contains('show');
-  
-  // Fechar outros dropdowns
+
   document.querySelectorAll('.country-dropdown-menu').forEach(d => d.classList.remove('show'));
   document.querySelectorAll('.country-dropdown-toggle').forEach(t => t.classList.remove('open'));
-  
+
   if (!isOpen) {
-    // Posicionar o dropdown relativemente ao selector
     const rect = selector.getBoundingClientRect();
+
+    let left = rect.left;
+
+    // Evita sair da tela no mobile
+    if (left + 280 > window.innerWidth) {
+      left = window.innerWidth - 296;
+    }
+
+    dropdown.style.position = 'fixed';
     dropdown.style.top = `${rect.bottom + 8}px`;
-    dropdown.style.left = `${rect.left}px`;    
-    // Ajustar para não sair da tela à direita    
+    dropdown.style.left = `${Math.max(16, left)}px`;
+    dropdown.style.width = '280px';
+    dropdown.style.zIndex = '999999';
+
     dropdown.classList.add('show');
     toggle.classList.add('open');
-    
-    // Focar na barra de busca
+
     const searchInput = dropdown.querySelector('.country-search-input');
-    if (searchInput) setTimeout(() => searchInput.focus(), 100);
+
+    if (searchInput) {
+      setTimeout(() => searchInput.focus(), 100);
+    }
   }
 }
 
