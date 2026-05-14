@@ -595,14 +595,14 @@ function openScheduleModal(plan) {
   const modal = document.getElementById('schedule-modal');
   modal.classList.remove('hidden');
   modal.classList.add('flex');
-  document.body.style.overflow = 'hidden';
+  document.body.classList.add('modal-open');
 }
 
 function closeScheduleModal() {
   const modal = document.getElementById('schedule-modal');
   modal.classList.add('hidden');
   modal.classList.remove('flex');
-  document.body.style.overflow = '';
+  document.body.classList.remove('modal-open');
   resetScheduleFlow();
 }
 
