@@ -573,6 +573,7 @@ function openScheduleModal(plan) {
     : {};
   
   const planNames = {
+    retorno: 'Retorno / acompanhamento'
     unica: 'Consulta única — R$ 300',
     trimestral: 'Trimestral — R$ 757',
     semestral: 'Semestral — R$ 1.297'
