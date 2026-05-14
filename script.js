@@ -769,9 +769,8 @@ function closeEntryModal() {
 function openPatientSchedule() {
   closeEntryModal();
 
-  openScheduleModal();
+  openScheduleModal('retorno');
 }
-
 function openPlansFlow() {
   closeEntryModal();
 
@@ -827,6 +826,8 @@ document.getElementById('schedule-modal').addEventListener('click', (e) => {
 document.getElementById('plans-modal').addEventListener('click', (e) => {
   if (e.target.id === 'plans-modal') closePlansModal();
 });
-
+document.getElementById('entry-modal').addEventListener('click', (e) => {
+  if (e.target.id === 'entry-modal') closeEntryModal();
+});
 // Init icons
 lucide.createIcons();
