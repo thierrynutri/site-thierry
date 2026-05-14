@@ -742,6 +742,48 @@ function selectPlanAndNavigate(plan) {
   closePlansModal();
   openScheduleModal(plan);
 }
+function openEntryModal() {
+  const modal = document.getElementById('entry-modal');
+
+  if (!modal) return;
+
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+
+  document.body.style.overflow = 'hidden';
+
+  lucide.createIcons();
+}
+
+function closeEntryModal() {
+  const modal = document.getElementById('entry-modal');
+
+  if (!modal) return;
+
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+
+  document.body.style.overflow = '';
+}
+
+function openPatientSchedule() {
+  closeEntryModal();
+
+  openScheduleModal();
+}
+
+function openPlansFlow() {
+  closeEntryModal();
+
+  const plansSection = document.getElementById('planos');
+
+  if (plansSection) {
+    plansSection.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+}
 
 // Função auxiliar para montar mensagem WhatsApp completa
 function buildWhatsAppMessage(userData, planName) {
