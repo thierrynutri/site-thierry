@@ -729,14 +729,14 @@ function openPlansModal() {
   const modal = document.getElementById('plans-modal');
   modal.classList.remove('hidden');
   modal.classList.add('flex');
-  document.body.style.overflow = 'hidden';
+  document.body.classList.add('modal-open');
 }
 
 function closePlansModal() {
   const modal = document.getElementById('plans-modal');
   modal.classList.add('hidden');
   modal.classList.remove('flex');
-  document.body.style.overflow = '';
+  document.body.classList.remove('modal-open');
 }
 
 function selectPlanAndNavigate(plan) {
