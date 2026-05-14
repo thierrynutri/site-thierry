@@ -264,3 +264,8 @@ section {
     .leading-relaxed { line-height: 1.75; }
     .leading-snug { line-height: 1.5; }
   }
+.modal-open {
+  overflow: hidden;
+  touch-action: none;
+  -webkit-overflow-scrolling: auto;
+}
