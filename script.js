@@ -506,6 +506,18 @@ document.getElementById('imc-form').addEventListener('submit', async (e) => {
     const bmiRounded = Math.round(bmi * 10) / 10;
     const classification = classifyBMI(bmi);
 
+await sendToFormspree({
+  tipo: 'IMC',
+  nome,
+  email,
+  whatsapp,
+  peso: weight,
+  altura: height,
+  objetivo: goal,
+  dificuldade: difficulty,
+  imc: bmi.toFixed(1)
+});
+
     // Verificar limite de dados
     if (leadsCount >= 999) {
       showToast('Limite atingido', 'Contate para mais informações.');
