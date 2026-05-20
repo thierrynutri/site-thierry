@@ -820,15 +820,38 @@ function showToast(title, msg) {
 }
 
 // Close modals on backdrop click
-document.getElementById('schedule-modal').addEventListener('click', (e) => {
-  if (e.target.id === 'schedule-modal') closeScheduleModal();
-});
+window.addEventListener('DOMContentLoaded', () => {
 
-document.getElementById('plans-modal').addEventListener('click', (e) => {
-  if (e.target.id === 'plans-modal') closePlansModal();
-});
-document.getElementById('entry-modal').addEventListener('click', (e) => {
-  if (e.target.id === 'entry-modal') closeEntryModal();
+  const scheduleModal = document.getElementById('schedule-modal');
+  const plansModal = document.getElementById('plans-modal');
+  const entryModal = document.getElementById('entry-modal');
+
+  if (scheduleModal) {
+    scheduleModal.addEventListener('click', (e) => {
+      if (e.target.id === 'schedule-modal') {
+        closeScheduleModal();
+      }
+    });
+  }
+
+  if (plansModal) {
+    plansModal.addEventListener('click', (e) => {
+      if (e.target.id === 'plans-modal') {
+        closePlansModal();
+      }
+    });
+  }
+
+  if (entryModal) {
+    entryModal.addEventListener('click', (e) => {
+      if (e.target.id === 'entry-modal') {
+        closeEntryModal();
+      }
+    });
+  }
+
+  lucide.createIcons();
+
 });
 // Init icons
 lucide.createIcons();
