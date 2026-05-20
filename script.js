@@ -751,7 +751,7 @@ function openEntryModal() {
   modal.classList.remove('hidden');
   modal.classList.add('flex');
 
-  document.body.style.overflow = 'hidden';
+  document.body.classList.add('modal-open');
 
   lucide.createIcons();
 }
