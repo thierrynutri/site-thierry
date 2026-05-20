@@ -1,3 +1,4 @@
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjgzyjej';
 // ============ TESTIMONIALS MARQUEE ============
 const testimonials1 = [
   {
@@ -436,6 +437,28 @@ function classifyBMI(bmi) {
       'Reconstrução completa de hábitos'
     ]
   };
+}
+
+async function sendToFormspree(data) {
+  try {
+
+    const response = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+
+    return response.ok;
+
+  } catch (error) {
+
+    console.error('Erro Formspree:', error);
+
+    return false;
+  }
 }
 
 document.getElementById('imc-form').addEventListener('submit', async (e) => {
