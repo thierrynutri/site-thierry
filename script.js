@@ -440,15 +440,21 @@ function classifyBMI(bmi) {
 }
 
 async function sendToFormspree(data) {
+
   try {
+
+    const formData = new FormData();
+
+    Object.keys(data).forEach((key) => {
+      formData.append(key, data[key]);
+    });
 
     const response = await fetch(FORMSPREE_ENDPOINT, {
       method: 'POST',
+      body: formData,
       headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(data)
+        Accept: 'application/json'
+      }
     });
 
     return response.ok;
