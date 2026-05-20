@@ -445,8 +445,8 @@ async function sendToFormspree(data) {
 
     const formData = new FormData();
 
-    Object.keys(data).forEach((key) => {
-      formData.append(key, data[key]);
+    Object.entries(data).forEach(([key, value]) => {
+      formData.append(key, value);
     });
 
     const response = await fetch(FORMSPREE_ENDPOINT, {
@@ -457,11 +457,20 @@ async function sendToFormspree(data) {
       }
     });
 
-    return response.ok;
+    const result = await response.json();
+
+    console.log('Formspree response:', result);
+
+    if (!response.ok) {
+      console.error('Formspree erro:', result);
+      return false;
+    }
+
+    return true;
 
   } catch (error) {
 
-    console.error('Erro Formspree:', error);
+    console.error('Erro fetch Formspree:', error);
 
     return false;
   }
