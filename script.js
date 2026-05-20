@@ -764,7 +764,7 @@ function closeEntryModal() {
   modal.classList.add('hidden');
   modal.classList.remove('flex');
 
-  document.body.style.overflow = '';
+  document.body.classList.remove('modal-open');
 }
 
 function openPatientSchedule() {
