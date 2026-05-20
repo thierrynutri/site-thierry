@@ -752,9 +752,7 @@ function openEntryModal() {
   modal.classList.add('flex');
 
   document.body.classList.add('modal-open');
-
-  lucide.createIcons();
-}
+} 
 
 function closeEntryModal() {
   const modal = document.getElementById('entry-modal');
