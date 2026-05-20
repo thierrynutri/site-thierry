@@ -114,7 +114,6 @@ section {
   background: #ffffff !important;
   opacity: 1 !important;
 
-
   width: min(280px, calc(100vw - 32px));
 
   border: 1px solid #e5e7eb;
@@ -143,6 +142,7 @@ section {
 
   contain: layout paint style;
 }
+
 .country-dropdown-menu.show {
   display: block;
 }
