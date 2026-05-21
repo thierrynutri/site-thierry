@@ -742,6 +742,19 @@ document.getElementById('schedule-form-step2').addEventListener('submit', async 
     semestral: 'Semestral'
   };
   
+  const scheduleSaved = await sendToFormspree({
+  tipo: 'Agendamento',
+  nome: userSessionData.name,
+  email: userSessionData.email,
+  whatsapp: userSessionData.whatsapp,
+  plano: planNames[selectedPlan],
+  dia: day,
+  horario: time,
+  objetivo: userSessionData.goal
+});
+
+console.log('Agendamento salvo:', scheduleSaved);
+  
   // Atualizar dados com dia e turno selecionados
   const finalData = {
     ...currentUserData,
