@@ -747,7 +747,7 @@ document.getElementById('schedule-form-step2').addEventListener('submit', async 
   nome: userSessionData.name,
   email: userSessionData.email,
   whatsapp: userSessionData.whatsapp,
-  plano: planNames[selectedPlan],
+  plano: planNames[currentPlan],
   dia: day,
   horario: time,
   objetivo: userSessionData.goal
