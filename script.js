@@ -868,7 +868,7 @@ function buildWhatsAppMessage(userData, planName) {
 function openWhatsApp(message) {
   const url = (window.elementSdk?.config?.whatsapp_url) || defaultConfig.whatsapp_url;
   const finalUrl = `${url}?text=${encodeURIComponent(message)}`;
-  window.open(finalUrl, '_blank', 'noopener,noreferrer');
+  window.location.href = finalUrl;
 }
 
 // ============ TOAST ============
